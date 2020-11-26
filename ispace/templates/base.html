@@ -31,7 +31,7 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css">
 
 	<!-- This file stores project-specific CSS -->
-	<link href="{% static 'css/style.css' %}" rel="stylesheet">
+	<link href="{% static 'css/tailwind.css' %}" rel="stylesheet">
 	<link href="{% static 'css/project.css' %}" rel="stylesheet">
 
 
@@ -39,225 +39,80 @@
 
 </head>
 
-<body>
-
-	<!--
-  Tailwind UI components require Tailwind CSS v1.8 and the @tailwindcss/ui plugin.
-  Read the documentation to get started: https://tailwindui.com/documentation
--->
-	<div>
-		<nav class="bg-gray-800">
-			<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-				<div class="flex items-center justify-between h-16">
-					<div class="flex items-center">
-						<div class="flex-shrink-0">
-							<img class="h-8 w-8" src="https://tailwindui.com/img/logos/workflow-mark-on-dark.svg"
-								alt="Workflow logo">
-						</div>
-						<div class="hidden md:block">
-							<div class="ml-10 flex items-baseline space-x-4">
-								<a href="#"
-									class="px-3 py-2 rounded-md text-sm font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Dashboard</a>
-
-								<a href="#"
-									class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Team</a>
-
-								<a href="#"
-									class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Projects</a>
-
-								<a href="#"
-									class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Calendar</a>
-
-								<a href="#"
-									class="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Reports</a>
-							</div>
-						</div>
-					</div>
-					<div class="hidden md:block">
-						<div class="ml-4 flex items-center md:ml-6">
-							<button
-								class="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700"
-								aria-label="Notifications">
-								<svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-									<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-										d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-								</svg>
-							</button>
-
-							<!-- Profile dropdown -->
-							<div class="ml-3 relative">
-								<div>
-									<button
-										class="max-w-xs flex items-center text-sm rounded-full text-white focus:outline-none focus:shadow-solid"
-										id="user-menu" aria-label="User menu" aria-haspopup="true">
-										<img class="h-8 w-8 rounded-full"
-											src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-											alt="">
-									</button>
-								</div>
-								<!--
-				  Profile dropdown panel, show/hide based on dropdown state.
-
-				  Entering: "transition ease-out duration-100"
-					From: "transform opacity-0 scale-95"
-					To: "transform opacity-100 scale-100"
-				  Leaving: "transition ease-in duration-75"
-					From: "transform opacity-100 scale-100"
-					To: "transform opacity-0 scale-95"
-				-->
-								<div class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
-									<div class="py-1 rounded-md bg-white shadow-xs" role="menu"
-										aria-orientation="vertical" aria-labelledby="user-menu">
-										<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-											role="menuitem">Your Profile</a>
-
-										<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-											role="menuitem">Settings</a>
-
-										<a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-											role="menuitem">Sign out</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="-mr-2 flex md:hidden">
-						<!-- Mobile menu button -->
-						<button
-							class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white">
-							<!-- Menu open: "hidden", Menu closed: "block" -->
-							<svg class="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-									d="M4 6h16M4 12h16M4 18h16" />
-							</svg>
-							<!-- Menu open: "block", Menu closed: "hidden" -->
-							<svg class="hidden h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-								<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-									d="M6 18L18 6M6 6l12 12" />
-							</svg>
-						</button>
-					</div>
+<body class="bg-red-900">
+	<nav class="px-4 md:px-24 py-2 bg-red-700 text-white">
+		<div class="flex flex-col md:flex-row items-center md:justify-start md:space-x md:space-x-4 space-y-2 md:space-y-0">
+			<div class="w-full md:w-auto flex flex-row items-center justify-between space-x-2">
+				<div class="p-px font-bold text-xl text-white tracking-wider">
+					<a href="{% url 'core:index' %}" class="outline-none">ispace</a>
 				</div>
-			</div>
-
-			<!--
-		Mobile menu, toggle classes based on menu state.
-
-		Open: "block", closed: "hidden"
-	  -->
-			<div class="hidden md:hidden">
-				<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-					<a href="#"
-						class="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700">Dashboard</a>
-
-					<a href="#"
-						class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Team</a>
-
-					<a href="#"
-						class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Projects</a>
-
-					<a href="#"
-						class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Calendar</a>
-
-					<a href="#"
-						class="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Reports</a>
+				<div class="w-full">
+					<form action="{% url 'core:search' %}" class="flex flex-row space-x-1">
+						<input type="text" name="query"
+							class="w-full p-1 outline-none bg-red-800 hover:bg-red-900 focus:bg-red-900 text-white tracking-wide">
+						<button class="p-1 focus:outline-none"><i class="fas fa-search"></i></button>
+					</form>
 				</div>
-				<div class="pt-4 pb-3 border-t border-gray-700">
-					<div class="flex items-center px-5 space-x-3">
-						<div class="flex-shrink-0">
-							<img class="h-10 w-10 rounded-full"
-								src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-								alt="">
-						</div>
-						<div class="space-y-1">
-							<div class="text-base font-medium leading-none text-white">Tom Cook</div>
-							<div class="text-sm font-medium leading-none text-gray-400">tom@example.com</div>
-						</div>
-					</div>
-					<div class="mt-3 px-2 space-y-1">
-						<a href="#"
-							class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Your
-							Profile</a>
-
-						<a href="#"
-							class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Settings</a>
-
-						<a href="#"
-							class="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700">Sign
-							out</a>
-					</div>
+				<div class="flex justify-right md:hidden">
+					<button id="mobile-navbar-button"
+						class="inline-flex items-center justify-center p-2 focus:outline-none rounded text-white hover:text-white hover:bg-red-800 focus:bg-red-900 focus:text-white"
+						aria-label="Main menu" aria-expanded="false">
+						<!-- Icon when menu is closed. -->
+						<!--
+						Heroicon name: menu
+						Menu open: "hidden", Menu closed: "block"
+						-->
+						<svg class="block h-6 w-6" id="mobile-navbar-closed" xmlns="http://www.w3.org/2000/svg"
+							fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M4 6h16M4 12h16M4 18h16" />
+						</svg>
+						<!-- Icon when menu is open. -->
+						<!--
+						Heroicon name: x
+						Menu open: "block", Menu closed: "hidden"
+						-->
+						<svg class="hidden h-6 w-6" id="mobile-navbar-open" xmlns="http://www.w3.org/2000/svg"
+							fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
 				</div>
-			</div>
-		</nav>
 
-		<header class="bg-white shadow">
-			<div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-				<h1 class="text-3xl font-bold leading-tight text-gray-900">
-					Dashboard
-				</h1>
 			</div>
-		</header>
-		<main>
-			<div class="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-				<!-- Replace with your content -->
-				<div class="px-4 py-6 sm:px-0">
-					<div class="border-4 border-dashed border-gray-200 rounded-lg h-96"></div>
-				</div>
-				<!-- /End replace -->
+			<div class="w-full md:w-auto flex-auto flex flex-col md:flex-row items-center justify-left md:space-x-0 space-y-1 md:space-y-0 hidden md:block text-center md:text-left"
+				id="mobile-navbar">
+				{% if request.user.is_authenticated %}
+				<a href="{% url 'users:detail' request.user.username %}"
+					class="outline-none w-full md:w-auto md:inline-block p-2 bg-red-700 hover:bg-red-800 focus:bg-red-900 rounded-sm">u/{{ request.user.username }}</a>
+				<a href="{% url 'account_logout' %}"
+					class="outline-none w-full md:w-auto md:inline-block p-2 bg-red-700 hover:bg-red-800 focus:bg-red-900 rounded-sm">Logout</a>
+				{% else %}
+				<a href="{% url 'account_login' %}"
+					class="outline-none w-full md:w-auto md:inline-block p-2 bg-red-700 hover:bg-red-800 focus:bg-red-900 rounded-sm">Login</a>
+				<a href="{% url 'account_signup' %}"
+					class="outline-none w-full md:w-auto md:inline-block p-2 bg-white text-red-700 hover:text-white hover:bg-red-800 focus:bg-red-900 rounded-sm">
+					Sign Up</a>
+				{% endif %}
 			</div>
-		</main>
-	</div>
-
-	<div class="mb-1">
-		<nav class="navbar navbar-expand-md navbar-light bg-light">
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-				data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<a class="navbar-brand" href="{% url 'home' %}">ispace</a>
-
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item active">
-						<a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="{% url 'about' %}">About</a>
-					</li>
-					{% if request.user.is_authenticated %}
-					<li class="nav-item">
-						{# URL provided by django-allauth/account/urls.py #}
-						<a class="nav-link"
-							href="{% url 'users:detail' request.user.username  %}">{% trans "My Profile" %}</a>
-					</li>
-					<li class="nav-item">
-						{# URL provided by django-allauth/account/urls.py #}
-						<a class="nav-link" href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a>
-					</li>
-					{% else %}
-					<li class="nav-item">
-						{# URL provided by django-allauth/account/urls.py #}
-						<a id="sign-up-link" class="nav-link"
-							href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
-					</li>
-					<li class="nav-item">
-						{# URL provided by django-allauth/account/urls.py #}
-						<a id="log-in-link" class="nav-link" href="{% url 'account_login' %}">{% trans "Sign In" %}</a>
-					</li>
-					{% endif %}
-				</ul>
-			</div>
-		</nav>
+		</div>
+	</nav>
 
 	</div>
 
-	<div class="container">
+	<div class="flex flex-col w-full bg-red-900 md:p-4">
 
 		{% if messages %}
 		{% for message in messages %}
-		<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">{{ message }}<button type="button"
-				class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<div class="w-auto my-2 md:m-2 p-4 font-semibold text-white rounded
+			{% if message.tags == 'error' %} bg-red-500
+			{% elif message.tags == 'success' %} bg-green-500
+			{% endif %}">
+			{{ message }}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
 		</div>
 		{% endfor %}
 		{% endif %}
@@ -273,7 +128,6 @@
 	<!-- Le javascript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
-	{% block javascript %}
 
 	<!-- Bootstrap JS and its dependencies-->
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -290,11 +144,13 @@
 
 
 	<!-- place project specific Javascript in this file -->
-
-	<script src="{% static 'js/project.js' %}"></script>
+	{% block javascript %}
 
 
 	{% endblock javascript %}
+
+	<script src="{% static 'js/navbar.js' %}"></script>
+
 </body>
 
 </html>

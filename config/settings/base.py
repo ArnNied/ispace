@@ -77,6 +77,9 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     "ispace.users.apps.UsersConfig",
     # Your stuff: custom apps go here
+    "ispace.hubs.apps.HubsConfig",
+    "ispace.posts.apps.PostsConfig",
+    "ispace.core.apps.CoreConfig",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -96,7 +99,7 @@ AUTHENTICATION_BACKENDS = [
 # https://docs.djangoproject.com/en/dev/ref/settings/#auth-user-model
 AUTH_USER_MODEL = "users.User"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-redirect-url
-LOGIN_REDIRECT_URL = "users:redirect"
+LOGIN_REDIRECT_URL = "core:index"
 # https://docs.djangoproject.com/en/dev/ref/settings/#login-url
 LOGIN_URL = "account_login"
 
@@ -284,3 +287,4 @@ REST_FRAMEWORK = {
 CORS_URLS_REGEX = r"^/api/.*$"
 # Your stuff...
 # ------------------------------------------------------------------------------
+ACCOUNT_LOGOUT_ON_GET = True

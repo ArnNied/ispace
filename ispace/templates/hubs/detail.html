@@ -1,0 +1,27 @@
+{% extends 'core/base.html' %}
+
+
+{% block side_content %}
+
+{% with hub=hub %}
+{% include 'hubs/side.html' %}
+{% endwith %}
+
+{% endblock side_content %}
+
+
+{% block main_content %}
+
+{% for post in hub.contains_post.all %}
+
+{% with post=post %}
+{% include 'posts/card.html' %}
+{% endwith %}
+
+{% empty %}
+<div class="p-12 font-semibold text-center text-xl bg-white rounded-sm">
+    This hub appears to be empty. Make it lively by joining and start posting.
+</div>
+{% endfor %}
+
+{% endblock main_content %}

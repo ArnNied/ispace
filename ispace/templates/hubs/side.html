@@ -1,0 +1,47 @@
+<div class="p-4 bg-white md:rounded-sm space-y-4">
+    <div class="flex flex-col">
+        <div class="font-bold text-2xl">
+            <a href="" class="outline-none hover:underline">
+                h/{{ hub.name }}
+            </a>
+        </div>
+        <div class="font-semibold">
+            Owned by: <a href="" class="outline-none hover:underline">u/{{ hub.owner }} </a>
+        </div>
+        <div class="text-sm text-gray-800">
+            Member: {{ hub.member.count }}
+        </div>
+        <div class="">
+            {{ hub.description }}
+        </div>
+    </div>
+    <div class="flex flex-col pt-2 border-t border-solid border-red-700 space-y-2">
+
+        {% if request.user == hub.owner %}
+        <a href="{% url 'hubs:edit' hub.slug %}" class="p-2 outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold text-center text-white rounded-sm">
+            EDIT HUB
+        </a>
+        {% elif request.user in hub.member.all %}
+        <form action="{% url 'hubs:leave' hub.slug %}" method="POST" class="">
+            {% csrf_token %}
+            <button type="submit"
+                class="w-full p-2 focus:outline-none bg-white text-red-700 hover:text-white hover:bg-red-800 focus:bg-red-900 font-bold text-center text-white border-2 border-solid border-red-700 rounded-sm">
+                LEAVE HUB
+            </button>
+        </form>
+        {% else %}
+        <form action="{% url 'hubs:join' hub.slug %}" method="POST" class="">
+            {% csrf_token %}
+            <button type="submit"
+                class="w-full p-2 focus:outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold text-center text-white rounded-sm">
+                JOIN HUB
+            </button>
+        </form>
+        {% endif %}
+
+        <a href="{% url 'posts:create' %}"
+            class="p-2 outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold text-center text-white rounded-sm">
+            CREATE POST
+        </a>
+    </div>
+</div>

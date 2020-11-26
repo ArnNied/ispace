@@ -1,0 +1,46 @@
+{% extends 'core/base.html' %}
+
+{% load myfilters %}
+
+{% block side_content %}
+
+{% with hub=hub %}
+{% include 'hubs/side.html' %}
+{% endwith %}
+
+{% endblock side_content %}
+
+
+{% block main_content %}
+<div class="flex flex-col p-2 bg-white rounded-sm space-y-2">
+
+    {% if form.non_field_errors %}
+    <div class="p-2 bg-red-500 text-white">
+        {{ form.non_field_errors}}
+    </div>
+    {% endif %}
+
+    <form action="{% url 'hubs:create' %}" method="POST" class="flex flex-col">
+        {% csrf_token %}
+
+        <div class="flex flex-col mb-2">
+            <label for="{{ form.name.id_for_label }}" class="font-bold text-lg">Hub Name</label>
+            {{ form.name.errors }}
+            {{ form.name|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
+            <div class="text-sm text-gray-700"><span id="name_max_length">0</span>/{{ form.name.field.max_length}}</div>
+        </div>
+        <div class="flex flex-col mb-2">
+            <label for="{{ form.description.id_for_label }}" class="font-bold text-lg">Hub Description</label>
+            {{ form.description.errors }}
+            {{ form.description|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
+            <div class="text-sm text-gray-700"><span id="description_max_length">0</span>/{{ form.description.field.max_length}}</div>
+        </div>
+        <div class="flex flex-row items-center space-x-2">
+            <button type="submit"
+            class="w-auto flex-grow p-2 focus:outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-semibold text-lg text-white rounded-sm">SAVE</button>
+            <a href="{% url 'hubs:delete' hub.slug %}" class="flex-initial p-2 outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-semibold text-lg text-white rounded-sm">DELETE</a>
+        </div>
+    </form>
+
+</div>
+{% endblock main_content %}

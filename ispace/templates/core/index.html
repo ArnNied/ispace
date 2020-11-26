@@ -1,0 +1,13 @@
+{% extends 'core/base.html' %}
+
+{% block main_content %}
+
+{% for post in posts_list %}
+
+{% with post=post%}
+{% include 'posts/card.html' %}
+{% endwith %}
+
+{% endfor %}
+
+{% endblock %}

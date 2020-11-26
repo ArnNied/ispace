@@ -1,0 +1,49 @@
+{% extends 'core/base.html' %}
+
+{% load myfilters %}
+
+{% block main_content %}
+<div class="flex flex-col p-2 bg-white rounded-sm space-y-2">
+
+    {% if form.non_field_errors %}
+    <div class="p-2 bg-red-500 text-white">
+        {{ form.non_field_errors}}
+    </div>
+    {% endif %}
+
+    <form action="{% url 'posts:edit' post.slug %}" method="POST" class="flex flex-col">
+        {% csrf_token %}
+
+        <div class="flex flex-col mb-2">
+            <label for="{{ form.title.id_for_label }}" class="font-bold text-lg">Title</label>
+            {{ form.title.errors }}
+            {{ form.title|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
+            <div class="text-sm text-gray-700"><span id="title_max_length">0</span>/{{ form.title.field.max_length}}</div>
+        </div>
+        <div class="flex flex-col mb-2">
+            <label for="{{ form.body.id_for_label }}" class="font-bold text-lg">Body</label>
+            {{ form.body.errors }}
+            {{ form.body|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
+            <div class="text-sm text-gray-700"><span id="body_max_length">0</span>/{{ form.body.field.max_length }}</div>
+        </div>
+        <div class="flex flex-row items-center space-x-2">
+            <button type="submit"
+            class="w-auto flex-grow p-2 focus:outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-semibold text-lg text-white rounded-sm">SAVE</button>
+            <a href="{% url 'posts:delete' post.slug %}" class="flex-initial p-2 outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-semibold text-lg text-white rounded-sm">DELETE</a>
+        </div>
+    </form>
+
+</div>
+{% endblock main_content %}
+
+
+{% block javascript %}
+    <script>
+        document.getElementById("id_title").addEventListener("keyup", function() {
+            document.getElementById('title_max_length').textContent = document.getElementById("id_title").value.length
+        })
+        document.getElementById("id_body").addEventListener("keyup", function() {
+            document.getElementById('body_max_length').textContent = document.getElementById("id_body").value.length
+        })
+    </script>
+{% endblock javascript %}

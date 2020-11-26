@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ post.title }}{% endblock title %}
+
+{% block side_content %}
+
+{% if post.hub %}
+
+{% with hub=post.hub  %}
+{% include 'hubs/side.html' %}
+{% endwith %}
+
+{% endif %}
+
+<div class="p-4 bg-white md:rounded-sm space-y-4">
+    <div class="flex flex-col">
+        <div class="font-bold text-2xl">
+            <a href="{% url 'users:detail' post.user %}" class="hover:underline">
+                u/{{ post.user.username }}
+            </a>
+        </div>
+        <div class="">
+            {{ post.user.bio }}
+        </div>
+        {% if request.user == post.user %}
+        <div class="flex flex-row pt-2 border-t border-solid border-red-700 space-x-2">
+            <a href="{% url 'posts:edit' post.slug %}" class="w-full p-2 oultine-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold text-center text-white rounded-sm">EDIT POST</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock side_content %}
+
+{% block main_content %}
+
+{% with post=post detail=True %}
+{% include 'posts/card.html' %}
+{% endwith %}
+
+{% endblock main_content %}

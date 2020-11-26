@@ -1,0 +1,94 @@
+{% extends 'core/base.html' %}
+
+
+{% block main_content %}
+
+<div class="flex flex-col p-2 bg-white rounded-sm space-y-2">
+    <div class="p-2 font-bold text-3xl border-b-2 border-solid border-red-700">
+        HUBS
+    </div>
+    <div class="divide-y divide-red-500 space">
+        {% for hub in hubs_list %}
+        <div class="flex flex-row items-center p-2 space-x-2">
+            <div class="flex flex-1 md:flex-initial flex-col w-3/12">
+                <a href="{% url 'hubs:detail' hub.slug %}"
+                    class="outline-none font-bold hover:underline">h/{{ hub.name }}</a>
+                <p class="text-sm text-gray-700">{{ hub.member.count }} Member(s)</p>
+            </div>
+            <div class="flex flex-1 hidden md:block">
+                {{ hub.description|truncatechars:200 }}
+            </div>
+            <div class="flex flex-initial justify-end">
+
+                {% if request.user == hub.owner %}
+                <a href="{% url 'hubs:edit' hub.slug %}"
+                    class="p-2 outline-none bg-gray-700 hover:bg-gray-800 focus:bg-gray-900 font-bold text-center text-white rounded-sm">
+                    EDIT HUB
+                </a>
+                {% elif request.user in hub.member.all %}
+                <form action="{% url 'hubs:leave' hub.slug %}" method="POST" class="">
+                    {% csrf_token %}
+                    <button type="submit"
+                        class="p-2 focus:outline-none bg-white text-red-700 hover:text-white hover:bg-red-800 focus:bg-red-900 font-bold ring-inset ring hover:ring-0 focus:ring-0 ring-red-700 text-center text-white rounded-sm">
+                        LEAVE HUB
+                    </button>
+                </form>
+                {% else %}
+                <form action="{% url 'hubs:join' hub.slug %}" method="POST" class="">
+                    {% csrf_token %}
+                    <button type="submit"
+                        class="p-2 focus:outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold text-center text-white rounded-sm">
+                        JOIN HUB
+                    </button>
+                </form>
+                {% endif %}
+
+            </div>
+        </div>
+        {% empty %}
+        <div class="p-8 font-semibold text-center text-xl bg-white rounded-sm">
+            No hubs found
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="flex flex-col p-2 bg-white rounded-sm space-y-2">
+    <div class="p-2 font-bold text-3xl border-b-2 border-solid border-red-700">
+        USER
+    </div>
+    <div class="divide-y divide-red-500 space">
+        {% for user in users_list %}
+        <div class="flex flex-row items-center p-2 space-x-2">
+            <div class="flex flex-1 md:flex-initial flex-col w-3/12">
+                <a href="{% url 'users:detail' user.username %}"
+                    class="outline-none font-bold text-lg hover:underline">u/{{ user.username }}</a>
+            </div>
+            <div class="flex flex-1 md:block">
+                {{ user.bio|truncatechars:200 }}
+            </div>
+        </div>
+        {% empty %}
+        <div class="p-8 font-semibold text-center text-xl bg-white rounded-sm">
+            No user found
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="my-2 p-2 bg-white rounded-sm"></div>
+
+{% for post in posts_list %}
+
+{% with post=post  %}
+{% include 'posts/card.html' %}
+{% endwith %}
+
+{% empty %}
+<div class="p-8 font-semibold text-center text-xl bg-white rounded-sm">
+    No post found
+</div>
+{% endfor %}
+
+
+{% endblock main_content %}
