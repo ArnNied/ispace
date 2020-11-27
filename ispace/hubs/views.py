@@ -21,6 +21,7 @@ class HubDetailView(DetailView):
 
     model = Hub
     context_object_name = "hub"
+    ordering = "-date_posted"
     template_name = "hubs/detail.html"
 
 

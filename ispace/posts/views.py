@@ -65,9 +65,14 @@ class PostDeleteView(LoginRequiredMixin, DeleteView):
     def get_object(self, queryset=None):
         obj = super().get_object()
 
-        # Ensure object is owned by current user (request.user).
-        if obj.user != self.request.user:
-            raise PermissionDenied
+        # Ensure object is owned by current user (request.user)
+        # or the Hub owner
+        try:
+            if obj.user != self.request.user and obj.hub.owner != self.request.user:
+                raise PermissionDenied
+        except AttributeError as post_has_no_hub:
+            if obj.user != self.request.user:
+                raise PermissionDenied from post_has_no_hub
 
         return obj
 
