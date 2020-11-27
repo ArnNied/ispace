@@ -28,11 +28,13 @@ class PostCreateView(LoginRequiredMixin, CreateView):
         context = super().get_context_data(**kwargs)
 
         # Form allowed data initialization to prevent client-side modification.
-        context["form"].fields["user"].initial = self.request.user.id
-        context["form"].fields["user"].queryset = User.objects.filter(
-            pk=self.request.user.id
+        form = context["form"]
+
+        form.fields["user"].initial = self.request.user.id
+        form.fields["user"].queryset = User.objects.filter(pk=self.request.user.id)
+        form.fields["hub"].queryset = (
+            self.request.user.joined_hub.all() | self.request.user.owned_hub.all()
         )
-        context["form"].fields["hub"].queryset = self.request.user.joined_hub.all()
 
         return context
 

@@ -50,9 +50,6 @@ class Hub(models.Model):
     def save(self, *args, **kwargs):
         self.slug = self.name
         super(Hub, self).save(*args, **kwargs)
-        self.member.add(
-            self.owner
-        )  # Add owner to the member list after creating the hub.
 
     def get_absolute_url(self):
         from django.shortcuts import reverse
