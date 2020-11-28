@@ -50,7 +50,8 @@
 
         {% if page_obj.has_next %}
         <div class="flex flex-col p-8 bg-white text-center text-2xl text-gray-700 rounded-sm loading">
-            <a class="animate-pulse infinite-more-link" href="?page={{ page_obj.next_page_number }}">Loading...</a>
+            <a class="animate-pulse infinite-more-link"
+            href="?page={{ page_obj.next_page_number }}{% if 'query' in request.GET %}&query={{ request.GET.query }}{% endif %}">Loading...</a>
         </div>
         {% endif %}
 
