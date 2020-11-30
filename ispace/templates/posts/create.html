@@ -25,16 +25,22 @@
             <label for="{{ form.title.id_for_label }}" class="font-bold text-lg">Title</label>
             {{ form.title.errors }}
             {{ form.title|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
-            <div class="text-sm text-gray-700"><span id="title_max_length">0</span>/{{ form.title.field.max_length}}</div>
+            <div class="text-sm text-gray-700">
+                <span id="title_max_length">0</span>/{{ form.title.field.max_length}}
+            </div>
         </div>
         <div class="flex flex-col mb-2">
             <label for="{{ form.body.id_for_label }}" class="font-bold text-lg">Body</label>
             {{ form.body.errors }}
             {{ form.body|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
-            <div class="text-sm text-gray-700"><span id="body_max_length">0</span>/{{ form.body.field.max_length}}</div>
+            <div class="text-sm text-gray-700">
+                <span id="body_max_length">0</span>/{{ form.body.field.max_length}}
+            </div>
         </div>
         <button type="submit"
-            class="p-2 focus:outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold text-lg text-white rounded-sm">POST</button>
+            class="p-2 focus:outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold text-lg text-white rounded-sm">
+            POST
+        </button>
     </form>
 
 </div>
@@ -42,12 +48,12 @@
 
 
 {% block javascript %}
-    <script>
-        document.getElementById("id_title").addEventListener("keyup", function() {
-            document.getElementById('title_max_length').textContent = document.getElementById("id_title").value.length
-        })
-        document.getElementById("id_body").addEventListener("keyup", function() {
-            document.getElementById('body_max_length').textContent = document.getElementById("id_body").value.length
-        })
-    </script>
+<script>
+    document.getElementById("id_title").addEventListener("keyup", function () {
+        document.getElementById('title_max_length').textContent = document.getElementById("id_title").value.length
+    })
+    document.getElementById("id_body").addEventListener("keyup", function () {
+        document.getElementById('body_max_length').textContent = document.getElementById("id_body").value.length
+    })
+</script>
 {% endblock javascript %}

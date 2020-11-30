@@ -4,9 +4,9 @@
 {% block content %}
 <div class="flex flex-col">
     <div class="flex flex-col my-auto p-12 lg:p-24 bg-white text-center space-y-4 rounded">
-        <div class="font-bold text-3xl lg:text-6xl">
+        <h2 class="font-bold text-3xl lg:text-6xl">
             DELETE POST
-        </div>
+        </h2>
         <div class="font-semibold text-4xl">
             "{{ post.title }}" ?
         </div>
@@ -15,11 +15,15 @@
         </div>
         <div class="flex flex-row mx-auto space-x-4 justfiy-center text-center">
             <a href="{% url 'posts:detail' post.slug %}"
-                class="p-2 outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold lg:text-xl text-white rounded-sm">CANCEL</a>
+                class="p-2 outline-none bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold lg:text-xl text-white rounded-sm">
+                CANCEL
+            </a>
             <form action="{% url 'posts:delete' post.slug %}" method="POST">
                 {% csrf_token %}
                 <button type="submit"
-                    class="p-2 focus:outline-none bg-white hover:bg-red-800 focus:bg-red-900 ring-inset ring hover:ring-0 focus:ring-0 ring-red-700 font-bold  lg:text-xl text-red-700 hover:text-white focus:text-white rounded-sm">CONFIRM</button>
+                    class="p-2 focus:outline-none bg-white hover:bg-red-800 focus:bg-red-900 ring-inset ring hover:ring-0 focus:ring-0 ring-red-700 font-bold lg:text-xl text-red-700 hover:text-white focus:text-white rounded-sm">
+                    CONFIRM
+                </button>
             </form>
         </div>
     </div>

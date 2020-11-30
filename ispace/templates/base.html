@@ -91,7 +91,7 @@
 					class="outline-none w-full md:w-auto md:inline-block p-2 bg-red-700 hover:bg-red-800 focus:bg-red-900 rounded-sm">Logout</a>
 				{% else %}
 				<a href="{% url 'account_login' %}"
-					class="outline-none w-full md:w-auto md:inline-block p-2 bg-red-700 hover:bg-red-800 focus:bg-red-900 rounded-sm">Login</a>
+					class="outline-none w-full md:w-auto md:inline-block p-2 bg-red-700 hover:bg-red-800 focus:bg-red-900 rounded-sm">Sign In</a>
 				<a href="{% url 'account_signup' %}"
 					class="outline-none w-full md:w-auto md:inline-block p-2 bg-white text-red-700 hover:text-white focus:text-white hover:bg-red-800 focus:bg-red-900 rounded-sm">
 					Sign Up</a>
@@ -104,7 +104,7 @@
 
 		{% if messages %}
 		{% for message in messages %}
-		<div class="w-auto my-2 md:m-2 p-4 font-semibold text-white rounded
+		<div class="w-auto my-2 md:m-2 p-4 text-white rounded
 			{% if message.tags == 'error' %} bg-red-500
 			{% elif message.tags == 'success' %} bg-green-500
 			{% endif %}">

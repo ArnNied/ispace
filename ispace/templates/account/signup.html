@@ -1,22 +1,52 @@
-{% extends "account/base.html" %}
+{% extends "base.html" %}
 
 {% load i18n %}
-{% load crispy_forms_tags %}
+{% load myfilters %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block title %}Sign up{% endblock title %}
 
-{% block inner %}
-<h1>{% trans "Sign Up" %}</h1>
-
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
-
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form|crispy }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button class="btn btn-primary" type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
-
-{% endblock %}
+{% block content %}
+<div class="flex flex-col w-full md:w-4/12 mx-auto p-8 bg-white rounded-sm space-y-2">
+	<h2 class="font-bold text-center text-4xl">
+		SIGN UP
+	</h2>
+	<div class="flex flex-col">
+		<form action="{% url 'account_login' %}" method="POST" class="space-y-2">
+			{% csrf_token %}
+			<div class="flex flex-col">
+				<label for="{{ form.email.id_for_label }}">Email</label>
+				{{ form.email.errors }}
+				{{ form.email|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
+			</div>
+			<div class="flex flex-col">
+				<label for="{{ form.username.id_for_label }}">Username</label>
+				{{ form.username.errors }}
+				{{ form.username|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
+			</div>
+			<div class="flex flex-col">
+				<label for="{{ form.password1.id_for_label }}">Password</label>
+				{{ form.password1.errors }}
+				{{ form.password1|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
+			</div>
+			<div class="flex flex-col">
+				<label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+				{{ form.password2.errors }}
+				{{ form.password2|addclass:"p-1 outline-none border border-solid border-gray-500 focus:border-black rounded-sm" }}
+			</div>
+			{% if redirect_field_value %}
+			<input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+			{% endif %}
+			<div class="flex flex-col">
+				<button class="p-2 bg-red-700 hover:bg-red-800 focus:bg-red-900 font-semibold text-white" type="submit">
+					SIGN UP
+				</button>
+			</div>
+		</form>
+	</div>
+	<div class="flex flex-row justify-start font-semibold">
+		<a href="{{ login_url }}" class="p-px hover:underline">
+			I have an account
+		</a>
+	</div>
+</div>
+{% endblock content %}

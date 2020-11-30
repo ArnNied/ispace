@@ -35,7 +35,9 @@
             {% endblock side_content %}
 
             <div class="hidden md:block p-4 bg-white md:rounded-sm">
-                <a href="{% url 'about' %}" class="outline-none hover:underline">About</a>
+                <a href="{% url 'about' %}" class="outline-none hover:underline">
+                    About
+                </a>
             </div>
         </div>
     </div>
@@ -51,7 +53,9 @@
         {% if page_obj.has_next %}
         <div class="flex flex-col p-8 bg-white text-center text-2xl text-gray-700 rounded-sm loading">
             <a class="animate-pulse infinite-more-link"
-            href="?page={{ page_obj.next_page_number }}{% if 'query' in request.GET %}&query={{ request.GET.query }}{% endif %}">Loading...</a>
+            href="?page={{ page_obj.next_page_number }}{% if 'query' in request.GET %}&query={{ request.GET.query }}{% endif %}">
+            Loading...
+        </a>
         </div>
         {% endif %}
 

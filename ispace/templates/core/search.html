@@ -11,9 +11,10 @@
         {% for hub in hubs_list %}
         <div class="flex flex-row items-center p-2 space-x-2">
             <div class="flex flex-1 md:flex-initial flex-col w-3/12">
-                <a href="{% url 'hubs:detail' hub.slug %}"
-                    class="outline-none font-bold hover:underline">h/{{ hub.name }}</a>
-                <p class="text-sm text-gray-700">{{ hub.member.count }} Member(s)</p>
+                <a href="{% url 'hubs:detail' hub.slug %}" class="outline-none font-bold hover:underline">
+                    h/{{ hub.name }}
+                </a>
+                <div class="text-sm text-gray-700">{{ hub.member.count }} Member(s)</div>
             </div>
             <div class="flex flex-1 hidden md:block">
                 {{ hub.description|truncatechars:200 }}
@@ -61,8 +62,9 @@
         {% for user in users_list %}
         <div class="flex flex-row items-center p-2 space-x-2">
             <div class="flex flex-1 md:flex-initial flex-col w-3/12">
-                <a href="{% url 'users:detail' user.username %}"
-                    class="outline-none font-bold text-lg hover:underline">u/{{ user.username }}</a>
+                <a href="{% url 'users:detail' user.username %}" class="outline-none font-bold text-lg hover:underline">
+                    u/{{ user.username }}
+                </a>
             </div>
             <div class="flex flex-1 md:block">
                 {{ user.bio|truncatechars:200 }}
