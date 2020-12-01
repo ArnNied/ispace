@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+{% load static %}
+
+{% block title %}u/{{ user.username }}{% endblock %}
+
+
+{% block side_content %}
+	<div class="flex flex-col p-4 bg-white rounded-sm space-y-2">
+		<div class="flex flex-col">
+			<div class="font-bold text-2xl">u/{{ user.username }}</div>
+			<div class="text-sm text-gray-500">Joined: {{ user.date_joined|date:"d M, Y" }}</div>
+			<div>{{ user.bio }}</div>
+		</div>
+
+		{% if user == request.user %}
+		<div class="flex flex-col pt-2 border-t border-solid border-red-700">
+			<a href="#" class="p-2 bg-red-700 hover:bg-red-800 focus:bg-red-900 font-bold text-center text-white rounded-sm">EDIT PROFILE</a>
+		</div>
+		{% endif %}
+	</div>
+{% endblock side_content %}
+
+
+{% block main_content %}
+
+{% for post in posts %}
+
+{% with post=post%}
+{% include 'posts/card.html' %}
+{% endwith %}
+
+{% empty %}
+<div class="p-8 font-semibold text-center text-xl bg-white rounded-sm">
+    No post found
+</div>
+{% endfor %}
+
+{% endblock main_content %}

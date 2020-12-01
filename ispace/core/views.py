@@ -26,7 +26,7 @@ class SearchView(ListView):
 
     model = Post
     context_object_name = "posts_list"
-    paginate_by = 2
+    paginate_by = 10
     template_name = "core/search.html"
 
     def get_queryset(self):
