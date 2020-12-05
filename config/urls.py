@@ -10,6 +10,11 @@ urlpatterns = [
     path(
         "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
     ),
+    path(
+        "request-delete-account/",
+        TemplateView.as_view(template_name="pages/request_delete_account.html"),
+        name="request_delete_account",
+    ),
     # Django Admin, use {% url 'admin:index' %}
     path(settings.ADMIN_URL, admin.site.urls),
     # User management

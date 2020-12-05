@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="flex flex-col p-8 bg-white text-center rounded-sm space-y-2">
+    <strong class="text-xl">Requesting an account deletion</strong>
+    <div>To have your account removed from this site, please send an email to <a href="mailto:arnnied03+dj-ispace@gmail.com" class="font-bold outline-none hover:underline">arnnied03+dj-ispace@gmail.com</a> with the following format:</div>
+    <div>
+        <div><strong>TO:</strong> arnnied03+dj-ispace@gmail.com</div>
+        <div><strong>SUBJECT:</strong> [ispace] DELETE ACCOUNT</div>
+        <div><strong>BODY:</strong> {email-to-be-removed}</div>
+    </div>
+
+    <div>
+        Failure to follow the format above will result in your email being ignored.
+    </div>
+</div>
+{% endblock content %}
