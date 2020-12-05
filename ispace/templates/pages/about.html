@@ -1,11 +1,18 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 
 
 {% block content %}
-<button class="focus:outline-none">
-    button
-</button>
-<a href="" class="">
-    link
-</a>
+<div class="flex flex-col p-8 bg-white rounded-sm space-y-2">
+    <h2 class="font-bold text-2xl">ispace</h2>
+    <div>
+        <strong>ispace</strong> is an attempt at creating a reddit clone for educational purpose using django 3.x (3.1).
+    </div>
+    <div>
+        <div><strong>Developer:</strong> ArnNied</div>
+        <div><strong>Contact me:</strong> arnnied03@gmail.com</div>
+        <div><strong>Source code:</strong> <a href="https://www.github.com/ArnNied/ispace/"
+                class="outline-none hover:underline" target="_blank">github.com/ArnNied/ispace/</a></div>
+    </div>
+
+</div>
 {% endblock content %}
