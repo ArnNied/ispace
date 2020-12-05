@@ -14,7 +14,7 @@ add 'detail=True' to remove the link overlay on the body
             {% endif %}
         </h2>
         <div class="font-semibold text-sm">
-            <a href="#" class="p-px outline-none hover:underline">
+            <a href="{% url 'users:detail' post.user %}" class="p-px outline-none hover:underline">
                 u/{{ post.user }}
             </a>
 
