@@ -7,7 +7,7 @@ from ispace.utils.myfunctions import id_generator
 # Create your models here.
 class Post(models.Model):
     slug = models.SlugField(
-        max_length=64,
+        max_length=200,
         unique=True,
         blank=True,
     )
