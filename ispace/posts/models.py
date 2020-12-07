@@ -44,7 +44,6 @@ class Post(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             self.slug = slugify(f"{id_generator()} {self.title}")
-            self.last_edited = self.date_posted
 
         return super().save(*args, **kwargs)
 
